@@ -1,0 +1,10 @@
+install.packages("e1071")
+library("e1071")
+
+
+putprice <- function(S,K,r,sigma,t){
+  d1 = (log(S/K) + (r + 1/2 * sigma ^ 2) * t) / (sigma * sqrt(t))
+  d2 = d1 - sigma * sqrt(t)
+  putprice = K * exp(-r*t) * pnorm(-d2) - S * pnorm(-d1) 
+  return(putprice)
+}
